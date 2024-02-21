@@ -1,7 +1,7 @@
 import TripItem from '../TripItem/TripItem';
 import styles from './TripList.module.css';
 
-function TripList({ trips, setLocation }) {
+function TripList({ trips, setLocation, setIsOpen, setDateForCountdownTimer }) {
   console.log(trips);
   return (
     <ul className={styles.list}>
@@ -13,6 +13,8 @@ function TripList({ trips, setLocation }) {
           dateStart={trip.dateStart}
           dateEnd={trip.dateEnd}
           setLocation={setLocation}
+          setIsOpen={setIsOpen}
+          setDateForCountdownTimer={setDateForCountdownTimer}
         />
       ))}
     </ul>

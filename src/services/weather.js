@@ -13,7 +13,7 @@ const apiService = axios.create({
 
 export async function getForecastForPeriodOfTime(location, date) {
   try {
-    const response = await apiService.get(`${location}/${date}?unitGroup=metric&key=${apiKey}`);
+    const response = await apiService.get(`${location}/${date}?key=${apiKey}&unitGroup=metric`);
     return response.data;
   } catch (error) {
     throw new Error(error);
@@ -22,7 +22,7 @@ export async function getForecastForPeriodOfTime(location, date) {
 
 export async function getForecastForToday(location) {
   try {
-    const response = await apiService.get(`${location}/today?key=${apiKey}`);
+    const response = await apiService.get(`${location}/today?key=${apiKey}&unitGroup=metric&iconSet=icons2`);
     return response.data;
   } catch (error) {
     throw new Error(error);
