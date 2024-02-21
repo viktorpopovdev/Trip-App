@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { getForecastForToday } from './services/weather';
-import TripList from './components/TripList/TripList';
 import Header from './components/Header/Header';
+import TripList from './components/TripList/TripList';
+import ForecastToday from './components/ForecastToday/ForecastToday';
+import styles from './App.module.css';
 
 function App() {
   const [weather, setWeather] = useState('');
+  const [location, setLocation] = useState('');
   const trips = [
     {
       img: 'https://assets.editorial.aetnd.com/uploads/2019/03/topic-london-gettyimages-760251843-feature.jpg',
@@ -27,17 +30,20 @@ function App() {
   ];
 
   useEffect(() => {
-    getForecastForToday('london').then((data) => {
+    getForecastForToday(location).then((data) => {
       setWeather(data);
     });
-  }, []);
+  }, [location]);
 
   console.log(weather);
 
   return (
     <>
       <Header />
-      <TripList trips={trips} />
+      <main className={styles.container}>
+        <TripList trips={trips} setLocation={setLocation} />
+        <ForecastToday weather={weather} />
+      </main>
     </>
   );
 }
