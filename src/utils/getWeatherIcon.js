@@ -4,7 +4,7 @@ function getWeatherIcon(iconName) {
       return 'https://raw.githubusercontent.com/visualcrossing/WeatherIcons/6231688b36311be3ed337868e322258c1cb5f2f3/SVG/3rd%20Set%20-%20Color/clear-day.svg';
     case 'clear-night':
       return 'https://raw.githubusercontent.com/visualcrossing/WeatherIcons/6231688b36311be3ed337868e322258c1cb5f2f3/SVG/3rd%20Set%20-%20Color/clear-night.svg';
-    case 'cloud':
+    case 'cloudy':
       return 'https://raw.githubusercontent.com/visualcrossing/WeatherIcons/6231688b36311be3ed337868e322258c1cb5f2f3/SVG/3rd%20Set%20-%20Color/cloudy.svg';
     case 'fog':
       return 'https://raw.githubusercontent.com/visualcrossing/WeatherIcons/6231688b36311be3ed337868e322258c1cb5f2f3/SVG/3rd%20Set%20-%20Color/fog.svg';

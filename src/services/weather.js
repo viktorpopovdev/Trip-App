@@ -11,11 +11,12 @@ const apiService = axios.create({
   },
 });
 
-export async function getForecastForPeriodOfTime(location, date) {
+export async function getForecastForPeriodOfTime(location, startDate, endDate) {
   try {
-    const response = await apiService.get(`${location}/${date}?key=${apiKey}&unitGroup=metric`);
+    const response = await apiService.get(`${location}/${startDate}/${endDate}?key=${apiKey}&unitGroup=metric`);
     return response.data;
   } catch (error) {
+    console.log(22);
     throw new Error(error);
   }
 }

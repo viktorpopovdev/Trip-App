@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  margin-top: 20px;
-  margin-bottom: 25px;
-  padding-left: 200px;
+  /* margin-top: 20px;
+  margin-bottom: 25px; */
+  margin: 20px 0px 25px 200px;
 }

@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
-import { getForecastForToday } from './services/weather';
+import { getForecastForToday, getForecastForPeriodOfTime } from './services/weather';
 import Header from './components/Header/Header';
 import TripList from './components/TripList/TripList';
 import ForecastToday from './components/ForecastToday/ForecastToday';
+import ForecastWeek from './components/ForecastWeek/ForecastWeek';
 import styles from './App.module.css';
 
 function App() {
   const [weather, setWeather] = useState('');
+  const [weatherWeek, setWeatherWeek] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [location, setLocation] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [dateForCountdownTimer, setDateForCountdownTimer] = useState('');
@@ -37,18 +41,31 @@ function App() {
     });
   }, [location]);
 
+  useEffect(() => {
+    getForecastForPeriodOfTime(location, startDate, endDate).then((data) => {
+      setWeatherWeek(data);
+    });
+  }, [location, startDate, endDate]);
+
   console.log(weather);
+  console.log(weatherWeek);
+  console.log(startDate);
 
   return (
     <>
       <Header />
-      <main className={styles.container}>
-        <TripList
-          trips={trips}
-          setLocation={setLocation}
-          setIsOpen={setIsOpen}
-          setDateForCountdownTimer={setDateForCountdownTimer}
-        />
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <TripList
+            trips={trips}
+            setLocation={setLocation}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+            setIsOpen={setIsOpen}
+            setDateForCountdownTimer={setDateForCountdownTimer}
+          />
+          <ForecastWeek weatherWeek={weatherWeek} />
+        </div>
         {isOpen && <ForecastToday weather={weather} dateForCountdownTimer={dateForCountdownTimer} />}
       </main>
     </>
