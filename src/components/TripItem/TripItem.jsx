@@ -11,8 +11,6 @@ function TripItem({
   setDateForCountdownTimer,
   setStartDate,
   setEndDate,
-  // onSelectedItem,
-  // selectedItem,
 }) {
   const start = moment(dateStart, 'DD.MM.YYYY');
   const formattedStartDate = start.format('YYYY-MM-DD');
@@ -20,12 +18,7 @@ function TripItem({
   const formattedEndDate = end.format('YYYY-MM-DD');
   console.log(formattedStartDate);
   console.log(formattedEndDate);
-  // const handleItemClick = (tripName) => {
-  //   console.log(tripName);
-  //   onSelectedItem(tripName);
-  // };
   return (
-    //${selectedItem && styles.selected}
     <div
       className={styles.card}
       onClick={() => {
@@ -34,14 +27,15 @@ function TripItem({
         setDateForCountdownTimer(dateStart);
         setStartDate(formattedStartDate);
         setEndDate(formattedEndDate);
-        // handleItemClick(name);
       }}
     >
-      <img src={image} alt={name} height={150} width={250} />
-      <h3>{name}</h3>
-      <p>
-        {dateStart} - {dateEnd}
-      </p>
+      <img src={image} alt={name} className={styles.picture} />
+      <div className={styles.description}>
+        <h3 className={styles.title}>{name}</h3>
+        <p className={styles.date}>
+          {dateStart} - {dateEnd}
+        </p>
+      </div>
     </div>
   );
 }

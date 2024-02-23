@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getForecastForToday, getForecastForPeriodOfTime } from './services/getWeather';
 import Header from './components/Header/Header';
 import TripList from './components/TripList/TripList';
@@ -7,6 +7,7 @@ import ForecastWeek from './components/ForecastWeek/ForecastWeek';
 import AddTripButton from './components/AddTripButton/AddTripButton';
 import styles from './App.module.css';
 import Overlays from './components/AddTripModal/Overlays.jsx/Overlays';
+import SearchBar from './components/SearchBar/SearchBar';
 // import AddTripModal from './components/AddTripModal/AddTripModal';
 
 function App() {
@@ -33,7 +34,9 @@ function App() {
       dateEnd: '01.03.2024',
     },
   ];
-  const [firstRender, setFirstRender] = useState(true);
+
+  const firstRenderForToday = useRef(true);
+  const firstRenderForWeek = useRef(true);
   const [trips, setTrips] = useState(tripsList);
   const [weather, setWeather] = useState('');
   const [weatherWeek, setWeatherWeek] = useState('');
@@ -42,33 +45,34 @@ function App() {
   const [location, setLocation] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const [dateForCountdownTimer, setDateForCountdownTimer] = useState('');
 
   useEffect(() => {
-    if (!firstRender) {
-      getForecastForToday(location).then((data) => {
-        setWeather(data);
-      });
-    } else {
-      setFirstRender(false);
+    if (firstRenderForToday) {
+      firstRenderForToday.current = false;
       return;
     }
-  }, [location, firstRender]);
+
+    getForecastForToday(location).then((data) => {
+      setWeather(data);
+    });
+  }, [location]);
 
   useEffect(() => {
-    if (!firstRender) {
-      getForecastForPeriodOfTime(location, startDate, endDate).then((data) => {
-        setWeatherWeek(data);
-      });
-    } else {
-      setFirstRender(false);
+    if (firstRenderForWeek) {
+      firstRenderForWeek.current = false;
       return;
     }
-  }, [location, startDate, endDate, firstRender]);
+    getForecastForPeriodOfTime(location, startDate, endDate).then((data) => {
+      setWeatherWeek(data);
+    });
+  }, [location, startDate, endDate]);
 
   console.log(weather);
   console.log(weatherWeek);
   console.log(startDate);
+  console.log(searchTerm);
 
   return (
     <div className={styles.content}>
@@ -76,8 +80,10 @@ function App() {
       <Header />
       <main className={styles.main}>
         <div className={styles.container}>
+          <SearchBar onSearch={setSearchTerm} />
           <TripList
             trips={trips}
+            searchTerm={searchTerm}
             setLocation={setLocation}
             setStartDate={setStartDate}
             setEndDate={setEndDate}

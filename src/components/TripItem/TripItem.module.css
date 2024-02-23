@@ -1,18 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .card {
-  width: 250px;
-  height: 350px;
-  border: 1px solid black;
+  width: 290px;
+  height: 400px;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  box-shadow: 0px 2.46px 4.19px 0px rgba(0, 0, 0, 0), 0px 10.84px 8.67px 0px rgba(0, 0, 0, 0.01),
+    0px 26.6px 17.29px 0px rgba(0, 0, 0, 0.01), 0px 51.23px 33.89px 0px rgba(0, 0, 0, 0.01),
+    0px 86.21px 62.32px 0px rgba(0, 0, 0, 0.02), 0px 133.01px 106.41px 0px rgba(0, 0, 0, 0.02);
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 500;
+  background-color: rgb(250, 244, 244);
+  /* justify-content: center;
+  align-items: center; */
 }
 
-/* .selected {
-  background-color: red;
-  border-color: red;
+.picture {
+  width: 290px;
+  height: 300px;
+  border-radius: 25px 25px 0px 0px;
 }
 
-.card:active {
-  background-color: blueviolet;
-} */
+.description {
+  display: flex;
+  padding-left: 20px;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.title {
+  margin-bottom: 0px;
+}
+
+.date {
+  margin-top: 0px;
+  color: rgb(94, 98, 130);
+}
