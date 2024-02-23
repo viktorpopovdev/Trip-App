@@ -37,7 +37,7 @@ function TripItem({
         // handleItemClick(name);
       }}
     >
-      <img src={image} alt={name} height={200} width={300} />
+      <img src={image} alt={name} height={150} width={250} />
       <h3>{name}</h3>
       <p>
         {dateStart} - {dateEnd}

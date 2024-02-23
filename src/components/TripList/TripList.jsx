@@ -12,7 +12,7 @@ function TripList({ trips, setLocation, setIsOpen, setDateForCountdownTimer, set
         <TripItem
           // onSelectedItem={setSelectedItem}
           // selectedItem={selectedItem}
-          key={trip.name}
+          key={trip.id + trip.name + Math.random()}
           name={trip.name}
           image={trip.img}
           dateStart={trip.dateStart}

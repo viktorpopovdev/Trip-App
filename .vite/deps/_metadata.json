@@ -1,0 +1,46 @@
+{
+  "hash": "92f70713",
+  "configHash": "2c705e3e",
+  "lockfileHash": "6dbcdeca",
+  "browserHash": "d45cdd44",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "404e2fb5",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "39b9903b",
+      "needsInterop": true
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "59295e3e",
+      "needsInterop": false
+    },
+    "moment": {
+      "src": "../../node_modules/moment/dist/moment.js",
+      "file": "moment.js",
+      "fileHash": "ebfd4c0b",
+      "needsInterop": false
+    },
+    "react-hook-form": {
+      "src": "../../node_modules/react-hook-form/dist/index.esm.mjs",
+      "file": "react-hook-form.js",
+      "fileHash": "be999a4b",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-UPB6Y4P2": {
+      "file": "chunk-UPB6Y4P2.js"
+    },
+    "chunk-3EJPJMEH": {
+      "file": "chunk-3EJPJMEH.js"
+    }
+  }
+}
