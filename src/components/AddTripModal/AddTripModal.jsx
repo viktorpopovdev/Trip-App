@@ -89,15 +89,15 @@ function AddTripModal({ setTrips, setIsVisible }) {
   console.log(citiesNames);
 
   return (
-    <div className={styles.modal}>
-      <div className={styles['modal-content']}>
-        <h2 className={styles.title}>Add New Trip</h2>
+    <div className={styles['modal-overlay']}>
+      <div className={styles['modal-window']}>
+        <h2 className={styles.title}>Create trip</h2>
         <button className={styles.close} onClick={onClose}>
           <img src={closeIcon} />
         </button>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>
-            Select City:
+        <form className={styles['modal-content']} onSubmit={handleSubmit(onSubmit)}>
+          <label className={styles.city}>
+            City
             <Controller
               name="city"
               control={control}
@@ -109,8 +109,9 @@ function AddTripModal({ setTrips, setIsVisible }) {
                     field.onChange(e);
                     setSelectedCity(e.target.value);
                   }}
+                  placeholder="Please select a city"
                 >
-                  <option value="">Select a city</option>
+                  <option value="">Please select a city</option>
                   {citiesNames.map((city) => (
                     <option key={city.id} value={city.cityName}>
                       {city.cityName}
@@ -119,34 +120,41 @@ function AddTripModal({ setTrips, setIsVisible }) {
                 </select>
               )}
             />
-            {errors.city && <span>This field is required</span>}
+            {errors.city && <span className={styles.error}>This field is required.</span>}
           </label>
-          <label>
-            Start Date:
+          <label className={styles.startDate}>
+            Start Date
             <input
+              className={styles.date}
               type="date"
               {...register('startDate', { required: true })}
               min={moment().format('YYYY-MM-DD')}
               max={moment().add(15, 'days').format('YYYY-MM-DD')}
               onChange={(e) => handleStartDateChange(e.target.value)}
             />
-            {errors.startDate && <span>This field is required</span>}
+            {errors.startDate && <span className={styles.error}>This field is required.</span>}
           </label>
-          <label>
-            End Date:
+          <label className={styles.endDate}>
+            End Date
             <input
+              className={styles.date}
               type="date"
+              placeholder="Select end date"
               {...register('endDate', { required: true, validate: validateEndDate })}
               min={startDate}
               max={moment().add(15, 'days').format('YYYY-MM-DD')}
               onChange={(e) => handleEndDateChange(e.target.value)}
             />
-            {errors.endDate && <span>This field is required</span>}
+            {errors.endDate && <span className={styles.error}>This field is required.</span>}
           </label>
-          <button type="submit">Save</button>
-          <button type="button" onClick={onClose}>
-            Cancel
-          </button>
+          <div className={styles.actions}>
+            <button className={styles.cancel} type="button" onClick={onClose}>
+              Cancel
+            </button>
+            <button className={styles.submit} type="submit">
+              Save
+            </button>
+          </div>
         </form>
       </div>
     </div>

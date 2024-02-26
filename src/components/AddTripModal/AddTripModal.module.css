@@ -1,36 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .title {
   display: flex;
   justify-content: center;
+  font-family: 'Volkhov';
+
+  font-weight: 700;
 }
 
-.modal {
+.close {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
   width: 100vw;
   height: 100vh;
-  background-color: #000000aa;
+  background-color: #686868aa;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modal-content {
-  /* background-color: #8ec5fc; */
-  background-image: linear-gradient(62deg, #b8bbdb 0%, #ffba74 100%);
+.modal-window {
+  background-color: rgb(252, 251, 250);
   position: relative;
-  max-width: 25rem;
   margin: 0 auto;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 1em #000000aa;
+  width: 500px;
+  min-height: 550px;
+  max-height: 600px;
+  padding: 20px;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-family: 'Poppins';
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.city::before {
+  content: '*';
+  position: absolute;
+  left: 55px;
+  color: red;
+  font-size: 18px;
+}
+
+.startDate::before {
+  content: '*';
+  position: absolute;
+  left: 107px;
+  color: red;
+  font-size: 18px;
+}
+
+.endDate::before {
+  content: '*';
+  position: absolute;
+  left: 98px;
+  color: red;
+  font-size: 18px;
+}
+
+select {
+  height: 40px;
+  border: none;
+  border-radius: 15px;
+  padding-left: 15px;
+  background-color: rgb(232, 232, 232);
+  font-family: 'Poppins';
+  font-weight: 300;
+  font-size: 15px;
+}
+
+select::-ms-expand {
+  margin-right: 10px;
+}
+
+.date {
+  height: 40px;
+  border: none;
+  border-radius: 15px;
+  padding-left: 15px;
+  background-color: rgb(232, 232, 232);
+  font-family: 'Poppins';
+  font-weight: 300;
+  font-size: 15px;
+}
+
+input::-webkit-calendar-picker-indicator {
+  margin-right: 10px;
+}
+
+.actions {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.cancel {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(169, 169, 169);
+  font-family: 'Poppins';
+  font-size: 17px;
+  font-weight: 500;
+  color: rgb(252, 251, 250);
+}
+
+.submit {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(0, 99, 128);
+  font-family: 'Poppins';
+  font-size: 17px;
+  font-weight: 500;
+  color: rgb(252, 251, 250);
+}
+
 .close {
   background-color: transparent;
   border: none;
+}
+
+.error {
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-size: 15px;
+  color: rgb(223, 105, 81);
+  padding-left: 20px;
 }

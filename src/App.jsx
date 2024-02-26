@@ -16,54 +16,54 @@ function App() {
       id: 1,
       img: 'https://assets.editorial.aetnd.com/uploads/2019/03/topic-london-gettyimages-760251843-feature.jpg',
       name: 'London',
-      dateStart: '20.02.2024',
-      dateEnd: '27.02.2024',
+      dateStart: '28.02.2024',
+      dateEnd: '05.03.2024',
     },
     {
       id: 2,
       img: 'https://media.cntraveller.com/photos/653783ab9da3a22eb97452f9/4:3/w_4608,h_3456,c_limit/Cheapest_time_to_go_to_Paris_October23_Getty_Images.jpg',
       name: 'Paris',
-      dateStart: '25.04.2027',
-      dateEnd: '27.04.2027',
+      dateStart: '29.02.2024',
+      dateEnd: '11.03.2024',
     },
     {
       id: 3,
       img: 'https://comeonbarcelona.com/wp-content/uploads/2020/06/IMG_7766-21.jpg',
       name: 'Barcelona',
       dateStart: '27.02.2024',
-      dateEnd: '01.03.2024',
+      dateEnd: '03.03.2024',
     },
   ];
 
-  const firstRenderForToday = useRef(true);
-  const firstRenderForWeek = useRef(true);
+  // const firstRenderForToday = useRef(true);
+  // const firstRenderForWeek = useRef(true);
   const [trips, setTrips] = useState(tripsList);
   const [weather, setWeather] = useState('');
   const [weatherWeek, setWeatherWeek] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [location, setLocation] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const [startDate, setStartDate] = useState('2024-02-28');
+  const [endDate, setEndDate] = useState('2024-03-05');
+  const [location, setLocation] = useState(tripsList[0].name);
+  // const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [dateForCountdownTimer, setDateForCountdownTimer] = useState('');
+  const [dateForCountdownTimer, setDateForCountdownTimer] = useState(tripsList[0].dateStart);
 
   useEffect(() => {
-    if (firstRenderForToday) {
-      firstRenderForToday.current = false;
-      return;
-    }
-
+    // if (firstRenderForToday) {
+    //   firstRenderForToday.current = false;
+    //   return;
+    // } else {
     getForecastForToday(location).then((data) => {
       setWeather(data);
     });
+    // }
   }, [location]);
 
   useEffect(() => {
-    if (firstRenderForWeek) {
-      firstRenderForWeek.current = false;
-      return;
-    }
+    // if (firstRenderForWeek) {
+    //   firstRenderForWeek.current = false;
+    //   return;
+    // }
     getForecastForPeriodOfTime(location, startDate, endDate).then((data) => {
       setWeatherWeek(data);
     });
@@ -77,8 +77,8 @@ function App() {
   return (
     <div className={styles.content}>
       <Overlays setTrips={setTrips} setIsVisible={setIsVisible} isVisible={isVisible} />
-      <Header />
       <main className={styles.main}>
+        <Header />
         <div className={styles.container}>
           <SearchBar onSearch={setSearchTerm} />
           <TripList
@@ -87,15 +87,16 @@ function App() {
             setLocation={setLocation}
             setStartDate={setStartDate}
             setEndDate={setEndDate}
-            setIsOpen={setIsOpen}
+            // setIsOpen={setIsOpen}
             setDateForCountdownTimer={setDateForCountdownTimer}
           />
-
           <ForecastWeek weatherWeek={weatherWeek} />
         </div>
-        <AddTripButton setIsVisible={setIsVisible} />
-        {isOpen && <ForecastToday weather={weather} dateForCountdownTimer={dateForCountdownTimer} />}
       </main>
+      <aside className={styles.aside}>
+        <AddTripButton setIsVisible={setIsVisible} />
+        <ForecastToday weather={weather} dateForCountdownTimer={dateForCountdownTimer} />
+      </aside>
     </div>
   );
 }

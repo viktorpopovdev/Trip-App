@@ -1,3 +1,4 @@
+import addNewTrip from '../../assets/addNewTrip.svg';
 import styles from './AddTripButton.module.css';
 
 function AddTripButton({ setIsVisible }) {
@@ -6,7 +7,8 @@ function AddTripButton({ setIsVisible }) {
   }
   return (
     <button className={styles.button} onClick={openModal}>
-      + Add Trip
+      <div className={styles.backgroundIcon}></div>
+      <img src={addNewTrip} className={styles.icon} />
     </button>
   );
 }

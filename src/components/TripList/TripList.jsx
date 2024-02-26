@@ -2,7 +2,15 @@
 import TripItem from '../TripItem/TripItem';
 import styles from './TripList.module.css';
 
-function TripList({ trips, setLocation, setIsOpen, setDateForCountdownTimer, setStartDate, setEndDate, searchTerm }) {
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { EffectCoverflow, Pagination, Navigation } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+function TripList({ trips, setLocation, setDateForCountdownTimer, setStartDate, setEndDate, searchTerm }) {
   console.log(trips);
   // const [selectedItem, setSelectedItem] = useState(null);
   const filteredTravels = trips.filter((travel) => travel.name.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -22,7 +30,7 @@ function TripList({ trips, setLocation, setIsOpen, setDateForCountdownTimer, set
             setLocation={setLocation}
             setStartDate={setStartDate}
             setEndDate={setEndDate}
-            setIsOpen={setIsOpen}
+            // setIsOpen={setIsOpen}
             setDateForCountdownTimer={setDateForCountdownTimer}
           />
         ))

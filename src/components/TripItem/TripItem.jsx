@@ -7,7 +7,6 @@ function TripItem({
   dateStart,
   dateEnd,
   setLocation,
-  setIsOpen,
   setDateForCountdownTimer,
   setStartDate,
   setEndDate,
@@ -23,7 +22,7 @@ function TripItem({
       className={styles.card}
       onClick={() => {
         setLocation(name);
-        setIsOpen(true);
+        // setIsOpen(true);
         setDateForCountdownTimer(dateStart);
         setStartDate(formattedStartDate);
         setEndDate(formattedEndDate);
